@@ -2,7 +2,7 @@
 title: IRONKLADD
 description: > # this means to ignore newlines until "baseurl:"
   Webpage for IRONKLADD, a team of students in SUNY Oswego's Spring 2015
-  CSC380.
+  section of CSC380.
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://IRONKLADD.github.io/" # the base hostname & protocol for your site
 github_username: IRONKLADD
@@ -13,3 +13,26 @@ kramdown:
   default_lang: javascript
   use_coderay: true
 highlighter: pygments
+
+# Author Info
+authors:
+  kenny:
+    display_name: Kenny Roffo
+    github: kroffo
+    avatar: https://avatars1.githubusercontent.com/u/7594482
+  lu:
+    display_name: Hsueh Lu
+    github: Anchorboy
+    avatar: https://avatars3.githubusercontent.com/u/10746266
+  alex:
+    display_name: Alex Jansing
+    github: DatasCat
+    avatar: https://avatars3.githubusercontent.com/u/10725775
+  dan:
+    display_name: Dan Wysocki
+    github: dwysocki
+    avatar: https://avatars3.githubusercontent.com/u/1548964
+  dean:
+    display_name: Dean Tupper
+    github: BetaBahamut
+    avatar: https://avatars3.githubusercontent.com/u/10729396
