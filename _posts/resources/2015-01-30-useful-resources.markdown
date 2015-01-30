@@ -19,6 +19,7 @@ Here are some useful links.
 - <https://developer.mozilla.org/en-US/docs/Web/JavaScript>
 - <http://cutjs.org/>
 - <http://docs.phonegap.com/en/edge/guide_platforms_index.md.html>
+- <https://cordova.apache.org/>
 
 # Jekyll
 
