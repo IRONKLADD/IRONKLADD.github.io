@@ -13,3 +13,5 @@ function foo(bar) {
   return "baz";
 }
 {% endhighlight %}
+
+This is a change
