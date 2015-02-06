@@ -5,4 +5,22 @@ title: "Week 2"
 author: ironkladd
 date: 2015-02-06T09:05:00-05:00
 ---
-Testing
+
+# Goals for next week
+
+- each person must
+    - clone the [mockups repository](https://github.com/IRONKLADD/mockups)
+    - create a personal branch
+    - create a board mockup in the branch
+- post to the blog, explaining your mockup
+- make coding guidlines
+
+
+# Accomplishments
+
+- created requirements document
+
+
+# Attendance
+
+All present
