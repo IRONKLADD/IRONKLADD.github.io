@@ -16,6 +16,10 @@ highlighter: pygments
 
 # Author Info
 authors:
+  ironkladd:
+    display_name: IRONKLADD
+    github: IRONKLADD
+    avatar: https://avatars1.githubusercontent.com/u/10742876
   kenny:
     display_name: Kenny Roffo
     github: kroffo
