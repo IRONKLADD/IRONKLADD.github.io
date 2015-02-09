@@ -22,15 +22,36 @@ date: 2015-02-06T10:00:00-05:00
 - Game will serve as a framework for block puzzle games (e.g. Bejeweled)
 - Game is divided into several classes
     - Shell/piece
+        - has no methods only attributes.
+        - has attributes
+            - color
+            - intensity
+            - special
+            - type
+            - associative class
         - atomic unit
     - Board
         - 2D array of shells/pieces
-        - has operations `get(row, col)` and `set(row, col, x)`
-    - Rules
+        - has methods
+            - `get(row, col)`
+            - `set(row, col, x)`
+        - has attributes
+            - grid
+    - configuration
+        - allowedColor 
+        - allowedMagnitude
+        - allowedSpecial
+        - allowedType
+        - width
+        - height
+    - Game Type
         - controls board
         - acts as an interface to a player
             - exposes certain operations
-        - imposes constraints
+        - has methods
+            - `selectShell(row,column)`
+            - `makeBoard()`
+            - `getBoard()`
     - Player
         - produces input to Rules
         - may be human or AI
