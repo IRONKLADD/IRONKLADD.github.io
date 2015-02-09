@@ -1,0 +1,20 @@
+digraph hierarchy {
+size="10,10"
+rankdir=BT
+nodesep=1
+node[shape=record,style=filled,fillcolor=gray95,margin=1,labeljust="r"]
+edge[dir=none, labeldistance=1]
+
+Shell[label = "{Shell|+color\l+magnitude\l+special\l+type|...}"]
+Board[label = "{Board|-grid|+get(row,col)\l+set(row,col,x)}"]
+Configuration[label = "{Configuration|+allowedColors\l+allowedMagnitudes\l+allowedSpecials\l+allowedTypes\l+height\l+width|...}"]
+GameType[label = "{GameType|...|-makeBoard()\l+getBoard()\l+selectShell(row,col)}"]
+Player[label = "{Player|...|...}"]
+
+Shell -> Board [taillabel = "*", headlabel = "1"]
+Configuration -> Shell [taillabel="1", headlabel="*"]
+Configuration -> Board [taillabel="1", headlabel="1"]
+Configuration -> GameType [taillabel="1", headlabel="1"]
+GameType -> Board [taillabel="1", headlabel="1"]
+Player -> GameType [taillabel="1+", headlabel="1"]
+}
