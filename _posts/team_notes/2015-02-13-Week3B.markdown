@@ -3,7 +3,7 @@ layout: post
 category: team_notes
 title: "Week 3 Friday"
 author: ironkladd
-date: 2015-02-12T09:00:00-05:00
+date: 2015-02-13T09:00:00-05:00
 ---
 
 # Goals for next meeting
