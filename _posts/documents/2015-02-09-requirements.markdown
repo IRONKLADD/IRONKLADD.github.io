@@ -44,6 +44,7 @@ date: 2015-02-06T10:00:00-05:00
         - allowedType
         - width
         - height
+        - has getters for all these attributes
     - Game Type
         - controls board
         - acts as an interface to a player
