@@ -1,26 +1,25 @@
 ---
 layout: post
 category: team_notes
-title: "Week 3 Friday"
+title: "Week 4 Monday"
 author: ironkladd
-date: 2015-02-13T09:00:00-05:00
+date: 2015-02-16T09:00:00-05:00
 ---
 
 # Goals for next meeting
-- CREATE A DAMN BOARD!!!!
-- make a blog post.
-- make a branch of Mockups.
+- Work on board.
 
 
 # Accomplishments
+- Updated Requirements document
+- Updated uml diagram
+  - added special,renderer,socket,user inuput, and player subclasses
 
-- created turn outline
-- talked Display workarounds(parameterized color)
-- talked about special/effects
 
 # Next Meeting
-  - Code Standards!!!!
-  - update requirements???
+- Code Standards
+- update uml based on class feedback.
+
 
 
 # Attendance
