@@ -1,0 +1,48 @@
+digraph hierarchy {
+size="10,10"
+rankdir=BT
+nodesep=1
+node[shape=record,style=filled,fillcolor=gray95,margin=1,labeljust="r"]
+edge[dir=none, labeldistance=1]
+
+Shell[label = "{Shell|+color\l+magnitude\l+special\l+type|...}"]
+Special[label = "{Special|+effect(board,row,col)|...}"]
+Board[label = "{Board|-grid|+get(row,col)\l+set(row,col,x)}"]
+
+Configuration[label = "{Configuration|+allowedColors\l+allowedMagnitudes\l+allowedSpecials\l+allowedTypes\l+height\l+width|...}"]
+
+GameType[label = "{GameType|...|-makeBoard()\l+getBoard()\l+selectShell(row,col)}"]
+
+UserInput[label = "{UserInput|...|...}"]
+NetworkInput[label = "{NetworkInput|...|...}"]
+
+Renderer[label = "{Renderer|...|...}"]
+
+Player[label = "{Player|...|...}"]
+LocalHuman[label = "{LocalHuman|...|...}"]
+RemoteHuman[label = "{RemoteHuman|...|...}"]
+Computer[label = "{Computer|...|...}"]
+
+
+Shell -> Board [taillabel = "*"]
+Shell -> Special [taillabel = "*"]
+
+Shell -> Configuration [taillabel="*"]
+Board -> Configuration
+Configuration -> GameType
+Board -> GameType
+Renderer -> GameType
+
+Player -> GameType [taillabel="1+"]
+LocalHuman -> Player [dir=forward]
+RemoteHuman -> Player [dir=forward]
+Computer -> Player [dir=forward]
+
+LocalHuman -> UserInput [taillabel="*"]
+UserInput -> GameType
+
+RemoteHuman -> NetworkInput [taillabel="*"]
+NetworkInput -> GameType
+
+Computer -> GameType [taillabel="*"]
+}
