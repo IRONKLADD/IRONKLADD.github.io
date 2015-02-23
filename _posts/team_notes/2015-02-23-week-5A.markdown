@@ -6,15 +6,19 @@ author: ironkladd
 date: 2015-02-23T09:00:00-05:00
 ---
 
-# Goals for next meeting
--.
+# Goals for the week
+- Upload your board.
+- Make a blog post explaining your board.
 
 
 # Accomplishments
-
+- Created coding standards.
+- talked about cut.js library and makeFile.
 
 
 # Next Meeting
+- setup a weekly build branch.
+- set up milestones.
 
 
 
