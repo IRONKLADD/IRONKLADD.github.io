@@ -36,7 +36,7 @@ function foo(bar) {
   between the keyword and parenthesis, but space before the curly brace, e.g.
 {% highlight javascript %}
 if(cond) {
-
+    /* ... */
 }
 {% endhighlight %}
 - Conditionals take this form
