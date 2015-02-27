@@ -1,0 +1,28 @@
+---
+layout: post
+category: team_notes
+title: "Week 5 Friday"
+author: ironkladd
+date: 2015-02-27T09:00:00-05:00
+---
+
+# Goals for the week
+- clone the game repository.
+- look up some cut.
+
+
+# Accomplishments
+- Created core game skeleton.
+- Talked about directory layout.
+
+
+# Next Meeting
+- Look at code.
+- Talk about cut.
+- Divide up tasks.
+
+
+
+# Attendance
+
+Dean,Dan,Alex,Kenny,Jonald
