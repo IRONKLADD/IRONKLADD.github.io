@@ -1,0 +1,24 @@
+---
+layout: post
+category: team_notes
+title: "Week 6 Monday"
+author: ironkladd
+date: 2015-03-02T09:00:00-05:00
+---
+
+# Goals for the week
+- Working sharaki game
+
+
+
+# Accomplishments
+- Activity Diagram of sheriki
+- Made abstract GameType class
+
+
+# Next Meeting
+- Do concrete shariki GameType
+
+# Attendance
+
+Dean,Dan,Alex,Kenny,Lu
