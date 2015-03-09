@@ -1,0 +1,28 @@
+---
+layout: post
+category: team_notes
+title: "Week 7 Monday"
+author: ironkladd
+date: 2015-03-09T09:00:00-05:00
+---
+
+# Goals for the Tomorrow
+- Everyone bring a laptop
+- Alex: checkboard/make Connection
+- Dean: Renderer/ui
+- Kenny: board/shell
+- Lu: floats
+- Dan: floats
+
+
+# Accomplishments
+- Figured out turn method discussed shit.
+
+
+
+# Next Meeting
+- SHERIKI NEEDS TO BE DONE BEFORE NEXT MEETING.
+
+# Attendance
+
+Dean,Dan,Alex,Kenny
