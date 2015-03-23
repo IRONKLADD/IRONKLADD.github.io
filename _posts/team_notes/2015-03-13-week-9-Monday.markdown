@@ -6,6 +6,7 @@ date: 2015-03-23T09:56:29-04:00
 ---
 
 # Goals for week
+- Keep working on Sharaki
 
 # Accomplishments
 
