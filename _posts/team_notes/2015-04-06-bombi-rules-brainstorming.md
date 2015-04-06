@@ -1,7 +1,7 @@
 ---
 layout: post
 category: team_notes
-title: The Bombs Rules
+title: Bombi Rules Brainstorming
 author: ironkladd
 date: 2015-04-06T09:25:00-05:00
 ---
@@ -22,4 +22,6 @@ date: 2015-04-06T09:25:00-05:00
   - magnitude: represented by dots (different shapes for different color shells)
   - type
   - special
-- game ends after n turns
+- game ends after `n` turns
+
+![UI Mockup]({{ site.baseurl }}/assets/mockups/bombi-UI-0.jpg)

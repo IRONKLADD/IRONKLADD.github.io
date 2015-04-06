@@ -2,6 +2,7 @@
 layout: post
 categories: team_notes
 title: "Sprint Plan"
+author: ironkladd
 date: 2015-04-01T09:56:29-04:00
 ---
 
