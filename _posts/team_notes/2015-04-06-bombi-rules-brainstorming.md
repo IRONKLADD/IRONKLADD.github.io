@@ -17,6 +17,7 @@ date: 2015-04-06T09:25:00-05:00
   - destroys pieces of the same color within blast radius
   - bombs within blast radius automatically have timer set to zero
   - overlapping bombs are chosen by a left and up first rule
+  - empty shells after a bomb's explosion are filled by randomly generated shells.
 - shell: a piece
   - color
   - magnitude: represented by dots (different shapes for different color shells)
