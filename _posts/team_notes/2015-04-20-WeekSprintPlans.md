@@ -17,6 +17,7 @@ date: 2015-04-20T09:42:29-04:00
   - in place, no gravity
 
 ## Front-end
+0. Keep track of row col
 1. display magnitudes
 2. display bomb
 3. display explosion
