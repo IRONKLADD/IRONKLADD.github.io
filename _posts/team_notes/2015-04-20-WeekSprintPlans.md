@@ -9,6 +9,7 @@ date: 2015-04-20T09:42:29-04:00
 # Goals for the sprint
 
 ## Back-end
+
 1. Keep track of active bombs
   - mapping turn -> bomb[ ]
 2. keep track of current turn
@@ -18,6 +19,7 @@ date: 2015-04-20T09:42:29-04:00
   - in place, no gravity
 
 ## Front-end
+
 0. Keep track of row col
 1. display magnitudes
 2. display bomb
