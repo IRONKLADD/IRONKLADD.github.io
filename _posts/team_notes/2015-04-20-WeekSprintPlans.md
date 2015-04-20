@@ -7,6 +7,7 @@ date: 2015-04-20T09:42:29-04:00
 ---
 
 # Goals for the sprint
+
 ## Back-end
 1. Keep track of active bombs
   - mapping turn -> bomb[ ]
