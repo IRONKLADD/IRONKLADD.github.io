@@ -18,6 +18,7 @@ function Display(root,players,config){
     this.updateScore   = updateScore;
     this.explodeShell  = explodeShell;
     this.explodeBomb   = explodeBomb;
+    var _player;
     var currentTurn = 0;
     var board = players[0].getBoard();
     var gameScreen = Cut.create()
@@ -55,6 +56,7 @@ function Display(root,players,config){
      *                         graphically built by the renderer.
      */
     function _createBoard(player) {
+        _player = player;
         var j = 0, i = 0, count = 0;
         var boardNode = Cut.create();
         boardNode.appendTo(gameScreen);
@@ -189,6 +191,7 @@ function Display(root,players,config){
     function explode(row,col,radius){
         for(var i = row-radius;i <= row + radius+1;i++){
             for(var j = col-radius;j <= col + radius+1;j++){
+                console.log("row " +i);
                 var cell = _displayGrid[i][j];
                 splode(cell);
                
@@ -205,6 +208,7 @@ function Display(root,players,config){
             })
     }
     function explodeShell(row,col){
+        console.log("in explode shell");
         var cell = _displayGrid[row][col];
         var tween = cell.tween(duration = 400, delay = 0);
         tween.pin({
@@ -228,31 +232,49 @@ function Display(root,players,config){
         // tween.pin({
         //     scale: 0,
         // })
-        var tween = bomb.tween(duration = 400, delay = 0);
+        var tween = bomb.tween(duration = 500, delay = 0);
         tween.pin({
             scale: 0,
         })
     }
     this.growShell = function(row,col,color){
         var cell = _displayGrid[row][col];
-        var next = cell.next(visible = false);
-        cell.remove();
-        var newCell = Cut.image("base:color_" +color).insertBefore(next).pin("pivot", .5)
-            .pin({scale:0});
-
-        var tween = newCell.tween(duration = 400, delay = 500);
+        var tween = cell.tween(duration = 500, delay = 0);
         tween.pin({
-            scale: 1,
+            textureAlpha: 0,
         })
-        _displayGrid[row][col] = newCell;
-        newCell.on(Cut.Mouse.CLICK,function(point) {
-                        this.pin({
-                            scaleX : 1.3,
-                            scaleY : 1.3
+        tween.then(function() {
+            var next = cell.next(visible = false);
+            var parent = cell.parent()
+            cell.remove();
+            if(next != null){
+                var newCell = Cut.image("base:color_" +color).insertBefore(next).pin("pivot", .5)
+                    .pin({scale:0});
+            }
+            else{
+                var newCell = Cut.image("base:color_" +color).appendTo(parent).pin("pivot", .5)
+                    .pin({scale:0});
+            }
+
+            var tween = newCell.tween(duration = 400, delay = 1000);
+            tween.pin({
+                scale: 1,
+            })
+            _displayGrid[row][col] = newCell;
+            newCell.row = row;
+            newCell.col = col;
+            newCell.on(Cut.Mouse.CLICK,function(point) {
+                            this.pin({
+                                scaleX : 1.3,
+                                scaleY : 1.3
+                            });
+                            var coord = new Util.Coord(this.row,this.col);
+                            console.log(_player);
+                            _player.selectShell(coord.row, coord.col);
                         });
-                        var coord = new Util.Coord(this._row,this._col);
-                        player.selectShell(coord.row, coord.col);
-                    });
+        });
+
+        
     }
     
 }
