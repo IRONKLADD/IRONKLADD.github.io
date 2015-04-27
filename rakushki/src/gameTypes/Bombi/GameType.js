@@ -107,9 +107,6 @@ function BombiGameType(players, config) {
      */
     function selectShell(player, row, col) {
         // no shell is active, make selected shell active
-        console.log("In select shell")
-        console.log(row)
-        console.log(col)
         if(!_isActive) {
             _isActive = true;
             _activeRow = row;
