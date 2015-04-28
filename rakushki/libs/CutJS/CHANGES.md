@@ -1,3 +1,20 @@
+#### v0.4.12
+* root.background method added
+
+#### v0.4.10
+* game loop continues if any tick returns true, but only renders if touched
+
+#### v0.4.9
+* texture.ratio renamed to texture.ppu
+
+#### v0.4.8
+* new drawing (experimental) and cutout (internal) api
+
+#### v0.4.3
+* pin set/get is refactored
+* resize in/out is replace with scale in-pad/out-crop 
+* default viewbox mode is 'in-pad'
+
 #### v0.4.0
 * `Cut.config` and `Cut.start(configs)` added
 * `Cut.init` and `Loader.loadImage` replaced with `"app-loader"` and `"image-loader"` configs

@@ -1,11 +1,12 @@
 /*
  * CutJS
- * Copyright (c) 2013-2014 Ali Shakiba, Piqnt LLC and other contributors
+ * Copyright (c) 2013-2015 Ali Shakiba, Piqnt LLC
  * Available under the MIT license
  * @license
  */
 
-DEBUG = typeof DEBUG === 'undefined' || DEBUG;
+if (typeof DEBUG === 'undefined')
+  DEBUG = true;
 
 function Mouse() {
   Mouse.subscribe.apply(Mouse, arguments);

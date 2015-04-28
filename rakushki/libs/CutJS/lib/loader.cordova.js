@@ -1,13 +1,14 @@
 /*
  * CutJS
- * Copyright (c) 2013-2014 Ali Shakiba, Piqnt LLC and other contributors
+ * Copyright (c) 2015 Ali Shakiba, Piqnt LLC
  * Available under the MIT license
  * @license
  */
 
 var Cut = require('./core');
 
-DEBUG = typeof DEBUG === 'undefined' || DEBUG;
+if (typeof DEBUG === 'undefined')
+  DEBUG = true;
 
 /**
  * Cordova/PhoneGap loader with FastContext support.
@@ -19,7 +20,6 @@ if (typeof FastContext === 'undefined') {
 
 window.addEventListener('load', function() {
   DEBUG && console.log('On load.');
-  // device ready not called; must be in a browser
   // var readyTimeout = setTimeout(function() {
   // DEBUG && console.log('On deviceready timeout.');
   // Cut.start();
@@ -69,7 +69,9 @@ function AppLoader(app, configs) {
     fastcontext : true
   });
 
-  full = context.isFast ? true : full;
+  context.isFast = !!context.isFast;
+
+  full = full || context.isFast;
 
   DEBUG && console.log('FastContext: ' + context.isFast);
 
@@ -87,7 +89,9 @@ function AppLoader(app, configs) {
       };
 
   DEBUG && console.log('Creating root...');
-  var root = new Cut.Root(requestAnimationFrame, function() {
+  var root = new Cut.Root(requestAnimationFrame, render);
+
+  function render() {
     if (context.isFast) {
       context.clear();
       context.setTransform(1, 0, 0, 1, 0, 0);
@@ -95,17 +99,28 @@ function AppLoader(app, configs) {
       context.setTransform(1, 0, 0, 1, 0, 0);
       context.clearRect(0, 0, width, height);
     }
-    this.render(context);
-  });
+    root.render(context);
+  }
+
+  root.background = function(color) {
+    if (context.isFast) {
+      context.setBackgroundColor && context.setBackgroundColor(color);
+    } else {
+      canvas.style.backgroundColor = color;
+    }
+    return this;
+  };
 
   app(root, canvas);
 
   resize();
   window.addEventListener('resize', resize, false);
+  window.addEventListener('orientationchange', resize, false);
 
   function resize() {
 
     if (full) {
+      // screen.availWidth/Height?
       width = (window.innerWidth > 0 ? window.innerWidth : screen.width);
       height = (window.innerHeight > 0 ? window.innerHeight : screen.height);
 
@@ -120,15 +135,19 @@ function AppLoader(app, configs) {
     width *= ratio;
     height *= ratio;
 
+    if (canvas.width === width && canvas.height === height) {
+      return;
+    }
+
     canvas.width = width;
     canvas.height = height;
 
     DEBUG && console.log('Resize: ' + width + ' x ' + height + ' / ' + ratio);
 
     root.viewport(width, height, ratio);
-  }
 
-  return root;
+    render();
+  }
 }
 
 function ImageLoader(src, handleComplete, handleError) {

@@ -78,8 +78,13 @@ function updateUi() {
 }
 
 function showInfo() {
-    widget('fonts', 1)('social', 500)('comments', 1000);
     removeClass('info', 'hide');
+    addClass('game', 'hide');
+    typeof Cut !== 'undefined' && (Cut.Loader || Cut).pause();
+}
+
+function showPauseMenu() {
+    removeClass('pauseMenu', 'hide');
     addClass('game', 'hide');
     typeof Cut !== 'undefined' && (Cut.Loader || Cut).pause();
 }
@@ -91,8 +96,47 @@ function showGame() {
     widget('fonts', 2000);
     removeClass('game', 'hide');
     addClass('info', 'hide');
+    addClass('pauseMenu', 'hide');
+    addClass('mainMenu', 'hide');
     typeof Cut !== 'undefined' && (Cut.Loader || Cut).resume();
     publishEvent('resize');
+}
+
+function showMainMenu() {
+    if (!isSupported()) {
+        return false;
+    }
+    removeClass('mainMenu', 'hide');
+    addClass('settingsMenu', 'hide');
+    addClass('game', 'hide');
+    typeof Cut !== 'undefined' && (Cut.Loader || Cut).pause();
+}
+
+function showSettings() {
+if (!isSupported()) {
+        return false;
+    }
+    removeClass('settingsMenu', 'hide');
+    addClass('mainMenu', 'hide');
+    typeof Cut !== 'undefined' && (Cut.Loader || Cut).pause();
+}
+    
+
+function newGame() {
+    rakushki.clearGame();
+    showMainMenu();
+}
+
+function muteAudio() {
+    removeClass('unmute', 'hide');
+    addClass('mute', 'hide');
+    document.getElementById('bgmusic').muted = true;
+}
+
+function unmuteAudio() {
+    removeClass('mute', 'hide');
+    addClass('unmute', 'hide');
+    document.getElementById('bgmusic').muted = false;
 }
 
 function startUi(mode) {
@@ -106,7 +150,7 @@ function startUi(mode) {
     if (mode == 'info') {
         showInfo();
     } else {
-        showGame();
+        showMainMenu();
     }
 }
 
