@@ -18,6 +18,7 @@ function Display(root,players,config){
     this.updateScore   = updateScore;
     this.explodeShell  = explodeShell;
     this.explodeBomb   = explodeBomb;
+    var _player;
     var currentTurn = 0;
     var board = players[0].getBoard();
     var gameScreen = Cut.create()
@@ -47,6 +48,9 @@ function Display(root,players,config){
         var temp = Cut.image("base:color_" + shell.color)
                               .appendTo(parent)
                               .pin("pivot", 0.5);
+        var overlay = Cut.image("dice" +shell.magnitude+":").appendTo(temp).pin("pivot",0.5)
+
+
         return temp;
     }
     /**
@@ -55,6 +59,7 @@ function Display(root,players,config){
      *                         graphically built by the renderer.
      */
     function _createBoard(player) {
+        _player = player;
         var j = 0, i = 0, count = 0;
         var boardNode = Cut.create();
         boardNode.appendTo(gameScreen);
@@ -109,6 +114,13 @@ function Display(root,players,config){
                                 scaleY : 2.10,
                                 textureAlpha : 100
                         });
+                        bomb._row     = i;
+                        bomb._col     = j;
+                        bomb._radius  = currentBomb.blastRad;
+                        bomb._color   = BombColor
+                        bomb.on(Cut.Mouse.CLICK,function(point) {
+                            explode(this._row,this._col,this._radius,this._color)
+                        });
                         var ticker = Cut.string("ascii_nimbus_black:")
                             .appendTo(bomb)
                             .pin("align", .5)
@@ -125,30 +137,6 @@ function Display(root,players,config){
                            .pin("align", 0);
                         _displayGrid[i][j] = invis;
                     }
-
-                    // if(currentBomb.cornerShell === temp){
-                    //     //displayBomb
-                    //     var bombCol = Cut.column().appendTo(row).spacing(0);
-                    //     var bombRow1 = Cut.row().appendTo(bombCol).spacing(0);
-                    //     var bombRow2 = Cut.row().appendTo(bombCol).spacing(0);
-                    //     var leftUP = Cut.image("base:color_" +BombColor)
-                    //           .appendTo(bombRow1)
-                    //           .pin("pivot", 0.5);
-                    //     var rightUP = Cut.image("base:color_" +BombColor)
-                    //           .appendTo(bombRow1)
-                    //           .pin("pivot", 0.5);
-                    //     var leftDO = Cut.image("base:color_"+BombColor)
-                    //           .appendTo(bombRow2)
-                    //           .pin("pivot", 0.5);
-                    //     var rightDO = Cut.image("base:color_"+BombColor)
-                    //           .appendTo(bombRow2)
-                    //           .pin("pivot", 0.5);
-                    // }
-                    // else{
-                    //     var invis = Cut.image("ascii_nimbus_black:1")
-                    //           .appendTo(row)
-                    //           .pin("pivot", 0.5);
-                    // }
                 }
             }
         }
@@ -186,7 +174,20 @@ function Display(root,players,config){
             scaleY : (radius+4)+(1/radius)+.1
         })
     }*/
-    function explode(row,col,radius){
+    function explode(row,col,radius,color){
+        for(var i = row-radius;i <= row + radius+1;i++){
+            for(var j = col-radius;j <= col + radius+1;j++){
+                if (i <  0 || j <  0 || i >= config.height || j >= config.width){
+                }
+                else{
+                    var cell = _displayGrid[i][j];
+                    splode(cell,color);
+                }
+               
+            }
+        }
+    }
+    function showRadius(row,col,radius,color){
         for(var i = row-radius;i <= row + radius+1;i++){
             for(var j = col-radius;j <= col + radius+1;j++){
                 var cell = _displayGrid[i][j];
@@ -195,14 +196,18 @@ function Display(root,players,config){
             }
         }
     }
-    function splode(cell){
-        var bomb = Cut.image("base:color_dark").appendTo(cell)
+    function splode(cell,color){
+        if(cell === undefined){return;}
+        var bomb = Cut.image("base:color_"+color).appendTo(cell)
             .pin("align", .5).pin({scale:0});
             var tween = bomb.tween(duration = 400, delay = 0);
             tween.pin({
                 scale: 1,
                 alpha: 1
             })
+            tween.then(function(){
+                bomb.remove()
+            });
     }
     function explodeShell(row,col){
         var cell = _displayGrid[row][col];
@@ -233,26 +238,46 @@ function Display(root,players,config){
             scale: 0,
         })
     }
-    this.growShell = function(row,col,color){
+    this.growShell = function(row,col,shell){
         var cell = _displayGrid[row][col];
-        var next = cell.next(visible = false);
-        cell.remove();
-        var newCell = Cut.image("base:color_" +color).insertBefore(next).pin("pivot", .5)
-            .pin({scale:0});
-
-        var tween = newCell.tween(duration = 400, delay = 500);
+        var tween = cell.tween(duration = 500, delay = 0);
         tween.pin({
-            scale: 1,
+            textureAlpha: 0,
         })
-        _displayGrid[row][col] = newCell;
-        newCell.on(Cut.Mouse.CLICK,function(point) {
-                        this.pin({
-                            scaleX : 1.3,
-                            scaleY : 1.3
-                        });
-                        var coord = new Util.Coord(this._row,this._col);
-                        player.selectShell(coord.row, coord.col);
-                    });
+        tween.then(function() {
+            var next = cell.next(visible = false);
+            var parent = cell.parent()
+            cell.remove();
+            if(next != null){
+                var newCell = Cut.image("base:color_" +shell.color).insertBefore(next).pin("pivot", .5)
+                    .pin({scale:0});
+            }
+            else{
+                var newCell = Cut.image("base:color_" +shell.color).appendTo(parent).pin("pivot", .5)
+                    .pin({scale:0});
+            }
+
+            var tween = newCell.tween(duration = 400, delay = 1000);
+            tween.pin({
+                scale: 1,
+            })
+            tween.then(function() {
+                var overlay = Cut.image("dice" +shell.magnitude+":").appendTo(newCell).pin("pivot",0.5)
+            });
+            _displayGrid[row][col] = newCell;
+            newCell.row = row;
+            newCell.col = col;
+            newCell.on(Cut.Mouse.CLICK,function(point) {
+                this.pin({
+                    scaleX : 1.3,
+                    scaleY : 1.3
+                });
+                var coord = new Util.Coord(this.row,this.col);
+                _player.selectShell(coord.row, coord.col);
+            });
+        });
+
+        
     }
     
 }

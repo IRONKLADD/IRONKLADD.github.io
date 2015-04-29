@@ -4,10 +4,10 @@ var app = Cut(function(root, container) {
     Cut.Mouse(root, container);
 
     rakushki.startSharikiGame = function() {
-        var width            = 8,
-            height           = 8;
-        var colors = ["red", "blue", "yellow", "green", "orange", "dark"];
-        var magnitudes = [null];
+        var width  = settingsCache.width,
+            height = settingsCache.height,
+            colors = settingsCache.colors;
+        var magnitudes = [0];
         var specials = [null];
         var types = [Shariki.NORMALSHELL];
         var config = new Configuration(width, height,
@@ -23,9 +23,9 @@ var app = Cut(function(root, container) {
     };
 
     rakushki.startBombiGame = function() {
-        var width            = 8,
-            height           = 8;
-        var colors = ["red", "blue", "yellow", "green", "orange", "dark"];
+        var width  = settingsCache.width,
+            height = settingsCache.height,
+            colors = settingsCache.colors;
         var magnitudes = [1, 2, 3, 4, 5];
         var specials = [null];
         var types = [Bombi.NORMALSHELL];
