@@ -7,7 +7,7 @@ date: 2015-02-13T09:00:00-05:00
 ---
 
 # Goals for next meeting
-- CREATE A DAMN BOARD!!!!
+- CREATE A *darn* BOARD!!!!
 - make a blog post.
 - make a branch of Mockups.
 
