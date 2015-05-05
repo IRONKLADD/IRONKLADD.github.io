@@ -1,0 +1,494 @@
+html,body {
+	width: 100%;
+	height: 100%;
+	background: #DDDDDD;
+}
+
+body {
+	font: 16px/1.4 Ubuntu, Arial, sans-serif;
+	color: #444;
+	text-shadow: 0 1px rgba(255, 255, 255, 0.7);
+}
+
+a {
+	color: #08c;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover,a:focus {
+	text-decoration: underline;
+}
+
+#game {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+canvas {
+	width: 80%;
+	height: 100%;
+	display: block;
+	position: absolute;
+	background: #FFFFFF;
+}
+
+.meta {
+	z-index: 10;
+	position: absolute;
+	top: 0%;
+	right: 0%;
+	height: 100%;
+        width: 20%;
+	display: table;
+}
+
+.meta .inner {
+	display: table-cell;
+	vertical-align: middle;
+        background-color: #FFFFFF;
+}
+
+.meta a {
+	display: block;
+	margin: 5px 0;
+}
+
+.meta a,.meta a img {
+	width: 40px;
+	height: 40px;
+}
+
+@media screen and (orientation:portrait) {
+	.meta {
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: auto;
+	}
+	.meta .inner {
+		display: block;
+		vertical-align: none;
+		text-align: center;
+	}
+	.meta a {
+		margin: 0;
+		display: inline-block;
+	}
+}
+
+/*
+@media only screen and (max-height: 600px) {
+	.meta a,.meta a img {
+		width: 30px;
+		height: 30px;
+	}
+}
+
+@media only screen and (orientation:portrait) and (max-width: 600px) {
+	.meta a,.meta a img {
+		width: 30px;
+		height: 30px;
+	}
+}
+*/
+
+#info {
+	width: 100%;
+	height: auto !important;
+	height: 100%;
+	min-height: 100%;
+	background: #f4f4f4;
+	padding-bottom: 1px;
+}
+
+.center {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#mainMenu {
+    width: 100%;
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
+    background: #F4F4F4;
+    padding-bottom: 1px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#pauseMenu {
+    width: 100%;
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
+    background: #F4F4F4;
+    padding-bottom: 1px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#settingsMenu {
+    width: 100%;
+    height: auto !important;
+    height: 100%;
+    min-height: 100%;
+    background: #F4F4F4;
+    padding-bottom: 1px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+@media only screen and (min-width: 851px) {
+	.header .inner {
+		border: solid #ddd;
+		border-radius: 9px 9px 0 0;
+		border-width: 1px 1px 0px 1px;
+	}
+	.content .inner {
+		border-radius: 0 0 9px 9px;
+		border: solid #ddd;
+		border-width: 0px 1px 1px 1px;
+	}
+}
+
+@media only screen and (max-width: 850px) {
+	.center {
+		max-width: 850px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.brand {
+	padding: 10px 30px;
+}
+
+.header {
+	
+}
+
+.header .inner {
+	padding: 40px 30px 20px;
+	background: #fff;
+}
+
+.content {
+	
+}
+
+.content .inner {
+	padding: 1px 30px;
+	background: #fff;
+}
+
+.comments {
+	padding: 50px 30px 30px;
+}
+
+.brand a {
+	font-weight: bold;
+	text-decoration: none;
+	color: #bbb;
+}
+
+.brand a:hover {
+	color: #888;
+}
+
+.apps {
+	
+}
+
+.apps a {
+	margin: 0 0 10px 0;
+	display: inline-block;
+}
+
+.apps a img {
+	vertical-align: middle;
+}
+
+.title {
+	font-size: 24px;
+	font-weight: bold;
+}
+
+.title-notagline {
+	font-size: 26px;
+	font-weight: bold;
+	margin: 10px 0;
+}
+
+.tagline {
+	
+}
+
+.logo {
+	float: left;
+	margin: -4px 20px -4px 0px;
+}
+
+.play,.play img,.logo,.logo  img {
+	width: 64px;
+	height: 64px;
+}
+
+.play {
+	float: right;
+}
+
+@media only screen and (min-width: 1600px) {
+	.logo {
+		margin-left: -124px;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+	.title {
+		font-size: 18px;
+	}
+	.tagline {
+		font-size: 14px;
+	}
+	.logo {
+		margin: 0px 10px 0px -10px;
+	}
+	.play,.play img,.logo  img {
+		width: 48px;
+		height: 48px;
+	}
+}
+
+.section {
+	margin: 0 0 50px 0;
+}
+
+.social {
+	line-height: 20px;
+	height: 20px;
+}
+
+.social div,.social iframe {
+	display: inline-block;
+}
+
+.spacer {
+	float: right;
+	clear: right;
+	width: 0px;
+	height: 250px;
+}
+
+.right-panel {
+	width: 40%;
+	float: right;
+	clear: right;
+	margin: 20px 0px 20px 20px;
+	background: #f4f4f4;
+}
+
+.right-panel .spacer {
+	height: 100px;
+}
+
+.quotes {
+	font-size: 14px;
+}
+
+.quotes .quote {
+	color: #555;
+	margin: 25px 25px;
+}
+
+.quotes .cite a {
+	color: #888;
+}
+
+@media only screen and (max-width: 800px) {
+	.right-panel {
+		padding: 0;
+		margin: 0;
+	}
+	.quotes {
+		display: none;
+	}
+}
+
+.hide,body .hide,html body .hide {
+	display: none;
+}
+
+.button {
+        display: inline-block;
+        margin: auto;
+        background-color: #FFFF00
+}
+
+#imageButton {
+        height: 100px;
+        width: 100px;
+}
+
+#slimButton {
+        height: 20px;
+        width: 100px;
+}
+
+.button:hover {
+        background-color: #FF5900;
+}
+
+.button img {
+        display: block;
+        height: 90px;
+        width: 90px;
+        margin: auto;
+        padding: 4px;
+}
+
+.redCheckBox {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: #FF0000;
+    position: absolute;
+    top: 40px;
+    left: 490px;
+}
+
+.blueCheckBox {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: #0000FF;
+    position: absolute;
+    top: 40px;
+    left: 550px;
+}
+
+.yellowCheckBox {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: #FFFF00;
+    position: absolute;
+    top: 40px;
+    left: 610px;
+}
+
+.greenCheckBox {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: #00FF00;
+    position: absolute;
+    top: 40px;
+    left: 670px;
+}
+
+.orangeCheckBox {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: #FF9900;
+    position: absolute;
+    top: 40px;
+    left: 730px;
+}
+
+.darkCheckBox {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: #111111;
+    position: absolute;
+    top: 40px;
+    left: 790px;
+}
+
+.acceptButton {
+        position: absolute;
+        top: 90px;
+        left: 500px;
+}
+
+.cancelButton {
+        position: absolute;
+        top: 90px;
+        left: 700px;
+}
+
+#menuButton {
+        position: absolute;
+        top: 40%;
+        left: 10%;
+        height: 5%;
+        width: 40%;
+}
+
+#pauseMenuButton {
+        position: relative;
+}
+
+#muteButton {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        height: 5%;
+        width: 40%;
+}
+
+
+#mute {
+        position: relative;
+}
+
+#unmute {
+        position: relative;
+}
+
+#feedbackButton {
+        position: absolute;
+        top: 60%;
+        left: 10%;
+        height: 5%;
+        width: 40%;
+}
+
+#feedback {
+        position: relative;
+}
+
+#fullscreen {
+        position: absolute;
+        top: 70%;
+        left: 10%;
+        height: 5%;
+        width: 40%;
+}
+
+#help {
+        position: absolute;
+        top: 80%;
+        left: 10%;
+        height: 5%;
+        width: 40%;
+}
+
+#scoreBox {
+        
+        position: absolute;
+        top: 20%;
+        left: 10%;
+}
+
+#score {
+        width: 100%;
+        display: inline-block;
+        margin: auto;
+        font-size: 24pt;
+}
