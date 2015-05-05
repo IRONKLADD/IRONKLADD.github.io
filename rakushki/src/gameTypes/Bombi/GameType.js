@@ -79,7 +79,7 @@ function BombiGameType(players, config) {
                 if (board.get(row, col).type === Bombi.EMPTYSHELL) {
                     var shell = config.getRandomShell();
                     board.set(row, col, shell);
-                    renderer.growShell(row, col, shell.color);
+                    renderer.growShell(row, col, shell);
                 }
             }
         }
@@ -107,9 +107,6 @@ function BombiGameType(players, config) {
      */
     function selectShell(player, row, col) {
         // no shell is active, make selected shell active
-        console.log("In select shell")
-        console.log(row)
-        console.log(col)
         if(!_isActive) {
             _isActive = true;
             _activeRow = row;
@@ -146,7 +143,7 @@ function BombiGameType(players, config) {
             _activeCol = null;
             renderer.update(turnCount);
         }
-        renderer.updateScore(player.score);
+        document.getElementById("score").innerText = player.score;
     }
 
     function touchShell(row, col, color, triggeredBombs, player) {
@@ -162,7 +159,7 @@ function BombiGameType(players, config) {
             else if (shell.color === color) {
                 shell.type = Bombi.EMPTYSHELL;
                 shell.color = "trans";
-                player.score++;
+                player.score = player.score + (shell.magnitude*10);
                 renderer.explodeShell(row, col);
             }
         }
@@ -215,6 +212,7 @@ function BombiGameType(players, config) {
         if(bombs !== undefined && bombs.length !== 0){
             bombs.forEach(function (bomb) {
                 detonate(bomb, player);
+                player.score = player.score + 40
             });
         }
     }
