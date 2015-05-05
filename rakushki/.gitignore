@@ -1,0 +1,8 @@
+# downloaded libraries
+libs/*
+
+
+# emacs junk files
+*#
+*.#
+*~
