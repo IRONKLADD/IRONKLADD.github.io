@@ -6,6 +6,8 @@ output:
     theme: CambridgeUS
     colortheme: dolphin
     fonttheme: serif
+    includes:
+      in_header: [header.tex]
 ---
 
 # The Dream
@@ -80,6 +82,8 @@ output:
     - JavaScript
     - to develop software as a group
 - made 2 pretty cool games
+
+<http://ironkladd.github.io/rakushki>
 
 
 ## Going Back in Time
