@@ -13,6 +13,7 @@ kramdown:
   default_lang: javascript
   use_coderay: true
 highlighter: pygments
+exclude: ["*.Rmd"]
 
 # Author Info
 authors:
