@@ -3,6 +3,7 @@ author: Team IRONKLADD
 title: Rakushki
 output:
   beamer_presentation:
+    keep_tex: true
     theme: CambridgeUS
     colortheme: dolphin
     fonttheme: serif
